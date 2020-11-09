@@ -10,7 +10,7 @@ class FormMovie extends React.Component{
         this.state = {
           title: '',
           poster: '',
-          comm: '',
+          comment: '',
         }
         this.onChange = this.onChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
@@ -27,25 +27,25 @@ class FormMovie extends React.Component{
         axios.post(url, this.state)
         .then(res => res.data)
         .then(res => {
-            alert(`Employé ajouté avec l'ID ${res.id} !`);
+            alert(`Film ajouté avec l'ID ${res.id} !`);
         })
         .catch(e => {
             console.error(e);
-            alert(`Erreur lors de l'ajout d'un employé : ${e.message}`);
+            alert(`Erreur lors de l'ajout d'un film : ${e.message}`);
         });
       }
 
       render(){
           return (
           <>
-          <div className="FormEmployee">
-            <h1>Saisie d'un employé</h1>
+          <div className="FormMovie">
+            <h1>Création d'un film</h1>
 
             <form onSubmit={this.submitForm}>
                 <fieldset>
                 <legend>Informations</legend>
                 <div className="form-data">
-                    <label htmlFor="title">Nom</label>
+                    <label htmlFor="title">Titre</label>
                     <input
                     type="text"
                     id="title"
@@ -56,7 +56,7 @@ class FormMovie extends React.Component{
                 </div>
 
                 <div className="form-data">
-                    <label htmlFor="poster">Prénom</label>
+                    <label htmlFor="poster">Poster</label>
                     <input
                     type="text"
                     id="poster"
@@ -67,13 +67,15 @@ class FormMovie extends React.Component{
                 </div>
 
                 <div className="form-data">
-                    <label htmlFor="comm">E-mail</label>
-                    <input
-                    type="comm"
-                    id="comm"
-                    name="comm"
+                    <label htmlFor="comment">Commentaire</label>
+                    <textarea
+                    rows='3'
+                    cols='40'
+                    type="comment"
+                    id="comment"
+                    name="comment"
                     onChange={this.onChange}
-                    value={this.state.comm}
+                    value={this.state.comment}
                     />
                 </div>
                 <hr />
@@ -88,4 +90,4 @@ class FormMovie extends React.Component{
       }
 }
 
-export default FormEmployee;
+export default FormMovie;
